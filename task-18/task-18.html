@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-18</title>
+	<style>
+		button {
+			width:60px;
+			height: 20px;
+			font-size:12px;
+			border: 1px solid gray;
+			border-radius: 2px;
+			background: #286090;
+			color:white;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		ul li {
+			height: 20px;
+			background: red;
+			font-size:18px;
+			font-weight: bold;
+			float:left;
+			margin-right: 10px;
+			color:white;
+			list-style: none;
+			padding:10px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<input type="number" id="input">
+	<button id="leftIn">左侧入</button>
+	<button id="leftOut">左侧出</button>
+	<button id="rightIn">右侧入</button>
+	<button id="rightOut">右侧出</button>
+	<ul id="list">
+		<li>11</li>
+		<li>12</li>
+		<li>13</li>
+		<li>14</li>
+		<li>15</li>
+	</ul>
+</body>
+<script>
+	var inp = document.getElementById('input');
+	var leftIn = document.getElementById('leftIn');
+	var leftOut = document.getElementById('leftOut');
+	var rightIn = document.getElementById('rightIn');
+	var rightOut = document.getElementById('rightOut');
+	var list = document.getElementById('list');
+
+	leftIn.onclick = function() {
+		if(!input.value == '') {
+			var newLi = document.createElement('li');
+			newLi.innerHTML = inp.value;
+			list.insertBefore(newLi,list.getElementsByTagName('li')[0]);
+		}
+	}
+	rightIn.onclick = function() {
+		if(!input.value == '') {
+			var newLi = document.createElement('li');
+			newLi.innerHTML = inp.value;			
+			list.appendChild(newLi);
+		}
+	}
+	leftOut.onclick = function() {
+		list.removeChild(list.firstChild);
+		alert('删除：'+list.firstChild.innerHTML);
+		list.removeChild(list.firstChild);		
+	}
+	rightOut.onclick = function(){
+		list.removeChild(list.lastChild);
+		alert('删除：'+list.lastChild.innerHTML);
+		list.removeChild(list.lastChild);	
+	}
+
+	for(var i=0;i<list.getElementsByTagName('li').length;i++){
+		list.getElementsByTagName('li')[i].onclick = function(){
+			alert(list.getElementsByTagName('li')[i]);
+			list.removeChild(this);
+		}
+	}
+
+	 
+ 
+</script>
+</html>
